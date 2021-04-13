@@ -43,5 +43,34 @@ WHERE price>1000
 model	ram	screen
 1750	128	14
 1298	64	15
-1752	128	14
+52	128	14
+Задание: 4 
+Найдите все записи таблицы Printer для цветных принтеров.
+
+SELECT code, model, color, type, price
+FROM printer
+WHERE color='y'
+
+
+code	model	color	type	price
+3	1434	y	Jet	290.0000
+2	1433	y	Jet	270.0000
+
+
+
+
+Задание: 5 
+Найдите номер модели, скорость и размер жесткого диска ПК, имеющих 12x или 24x CD и цену менее 600 дол.
+
+SELECT pc.model, pc.speed, pc.hd
+FROM pc
+WHERE pc.cd in ('12x', '24x') and 
+price<600
+
+
+model	speed	hd
+1232	500	10.0
+1232	450	8.0
+1232	450	10.0
+1260	500	10.0
 
