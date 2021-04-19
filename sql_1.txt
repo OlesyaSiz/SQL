@@ -73,4 +73,62 @@ model	speed	hd
 1232	450	8.0
 1232	450	10.0
 1260	500	10.0
+                                                                                                                                                                Задание: 6 
+Для каждого производителя, выпускающего ПК-блокноты c объёмом жесткого диска не менее 10 Гбайт, найти скорости таких ПК-блокнотов. Вывод: производитель, скорость.
 
+SELECT DISTINCT product.maker, laptop.speed
+FROM laptop INNER JOIN 
+product ON product.model=laptop.model
+WHERE laptop.hd >= 10
+
+
+maker	speed
+A	450
+A	600
+A	750
+B	750
+
+
+
+Задание: 7 
+Найдите номера моделей и цены всех имеющихся в продаже продуктов (любого типа) производителя B (латинская буква).
+
+SELECT pc.model, pc.price 
+FROM pc JOIN
+product p ON pc.model=p.model
+WHERE maker = 'B'
+UNION
+SELECT laptop.model, laptop.price 
+FROM laptop JOIN
+product p ON laptop.model=p.model
+WHERE maker = 'B'
+UNION
+SELECT printer.model, printer.price 
+FROM printer JOIN
+product p ON printer.model=p.model
+WHERE maker = 'B'
+
+
+
+model	price
+1121	850.0000
+1750	1200.0000
+
+
+
+
+Задание: 8 
+Найдите производителя, выпускающего ПК, но не ПК-блокноты.
+
+
+SELECT DISTINCT maker
+FROM product
+WHERE type = 'pc'
+EXCEPT
+SELECT DISTINCT maker
+FROM product
+Where type = 'laptop'
+
+
+maker
+E
