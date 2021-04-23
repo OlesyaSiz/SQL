@@ -132,3 +132,82 @@ Where type = 'laptop'
 
 maker
 E
+
+
+Задание: 9
+Найдите производителей ПК с процессором не менее 450 Мгц. Вывести: Maker
+
+
+SELECT DISTINCT maker
+FROM pc INNER JOIN
+product ON product.model=pc.model
+WHERE speed>=450
+
+
+maker
+A
+B
+E
+
+
+
+Задание: 10
+Найдите модели принтеров, имеющих самую высокую цену. Вывести: model, price
+
+
+SELECT model, price
+FROM printer
+WHERE price = (SELECT MAX(price)
+               FROM printer
+);
+
+
+
+model	price
+1288	400.0000
+1276	400.0000
+
+
+
+Задание: 11
+Найдите среднюю скорость ПК.
+
+
+SELECT AVG(speed) AS Avg_speed
+FROM pc
+
+
+
+Avg_speed
+608
+
+
+
+Задание: 12
+Найдите среднюю скорость ПК-блокнотов, цена которых превышает 1000 дол.
+
+
+SELECT AVG(speed) AS Avg_speed
+FROM laptop
+WHERE price >=1000
+
+
+
+Avg_speed
+700
+
+
+
+
+Задание: 13
+Найдите среднюю скорость ПК, выпущенных производителем A.
+
+
+SELECT AVG(speed) AS Avg_speed
+FROM pc INNER JOIN
+product p ON pc.model=p.model
+WHERE maker = 'A'
+
+
+Avg_speed
+606
