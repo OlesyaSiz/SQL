@@ -1,0 +1,28 @@
+Найдите размеры жестких дисков, совпадающих у двух и более PC. Вывести: HD
+SELECT DISTINCT pc1.hd 
+FROM PC pc1, PC pc2 
+WHERE pc1.hd = pc2.hd AND 
+      pc1.code <> pc2.code
+
+
+hd
+5.0
+8.0
+10.0
+14.0
+20.0
+------------------------------
+Найдите пары моделей PC, имеющих одинаковые скорость и RAM. В результате каждая пара указывается только один раз, т.е. (i,j), но не (j,i), Порядок вывода: модель с большим номером, модель с меньшим номером, скорость и RAM.
+
+SELECT DISTINCT p1.model, p2.model, p1.speed, p1.ram 
+FROM PC p1, PC p2
+WHERE p1.speed = p2.speed AND
+      p1.ram = p2.ram AND
+      p1.model > p2.model
+
+
+model	model	speed	ram
+1233	1121	750	128
+1233	1232	500	64
+1260	1232	500	32
+
